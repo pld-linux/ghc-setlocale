@@ -5,13 +5,14 @@
 %define		pkgname	setlocale
 Summary:	Haskell bindings to setlocale
 Name:		ghc-%{pkgname}
-Version:	1.0.0.3
+Version:	1.0.0.9
 Release:	1
 License:	BSD
 Group:		Development/Languages
 #Source0Download: http://hackage.haskell.org/package/setlocale
 Source0:	http://hackage.haskell.org/package/%{pkgname}-%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	348690842f5233f0e42e16bd615f777e
+# Source0-md5:	4cd39943f5fe5c278fde8bf1157a9383
+Patch0:		ghc-8.10.patch
 URL:		http://hackage.haskell.org/package/setlocale
 BuildRequires:	ghc >= 6.12.3
 %if %{with prof}
@@ -48,6 +49,7 @@ kiedy potrzebujemy systemu profilującego z GHC.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
+%patch0 -p1
 
 %build
 runhaskell Setup.hs configure -v2 \
@@ -88,13 +90,14 @@ rm -rf $RPM_BUILD_ROOT
 %doc %{name}-%{version}-doc/*
 %{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*.o
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*.so
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*.a
 %exclude %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*_p.a
 
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/System
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/System/Locale
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/System/Locale/*.hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/System/Locale/*.dyn_hi
 
 %if %{with prof}
 %files prof

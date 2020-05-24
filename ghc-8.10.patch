@@ -1,0 +1,11 @@
+--- setlocale-1.0.0.9/setlocale.cabal~	2019-09-21 22:35:54.000000000 +0200
++++ setlocale-1.0.0.9/setlocale.cabal	2020-05-24 14:07:34.571482404 +0200
+@@ -18,7 +18,7 @@
+   exposed-modules:     System.Locale.SetLocale
+   -- other-modules:
+   other-extensions:    DeriveDataTypeable, ForeignFunctionInterface
+-  build-depends:       base >=4.6 && <4.14
++  build-depends:       base >=4.6 && <5
+   -- hs-source-dirs:
+   build-tools:         hsc2hs
+   default-language:    Haskell2010
