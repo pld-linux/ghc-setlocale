@@ -6,7 +6,7 @@
 Summary:	Haskell bindings to setlocale
 Name:		ghc-%{pkgname}
 Version:	1.0.0.9
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages
 #Source0Download: http://hackage.haskell.org/package/setlocale
